@@ -6,8 +6,7 @@ The app fetches products from an external API, allows users to search products b
 
 ## 🚀 Live Demo
 
-
-
+https://product-explorer-react-ten.vercel.app/
 
 ## 📸 Preview
 
