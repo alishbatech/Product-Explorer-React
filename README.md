@@ -1,19 +1,154 @@
-# React + Vite
+# 🛍️ Product Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive product browsing application built with React.js, Tailwind CSS, and custom React Hooks.
 
-Currently, two official plugins are available:
+The app fetches products from an external API, allows users to search products by name, and lets users individually show or hide product descriptions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Live Demo
 
-## React Compiler
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
 
-## Expanding the ESLint configuration
+## 📸 Preview
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+![Product Explorer](./public/products.png)
+
+## 📸 Features
+
+- Fetches product data from an external API
+- Displays products in a responsive grid layout
+- Search products by name
+- Individual product description show/hide
+- Loading state
+- Error state
+- Responsive design for mobile, tablet, and desktop
+- Reusable custom React Hooks
+
+## 🛠️ Technologies Used
+
+- React.js
+- JavaScript (ES6+)
+- Tailwind CSS
+- React Hooks
+- Custom Hooks
+- DummyJSON API
+
+## 🧩 Custom Hooks Used
+
+"useFetch"
+
+Used to handle API data fetching, loading state, and error state.
+
+const { data, isError, isLoading } = useFetch(
+  "https://dummyjson.com/products"
+)
+
+"useForm"
+
+Used to manage the search input value.
+
+const { values, handleChange } = useForm({
+  search: ""
+})
+
+The search value is then used to filter products:
+
+const filteredProducts = data.products.filter(product =>
+  product.title
+    .toLowerCase()
+    .includes(values.search.toLowerCase())
+)
+
+"useToggle"
+
+Used inside each "Product" component to independently show or hide its description.
+
+const [isOpen, handleToggle] = useToggle()
+
+This allows every product to maintain its own description state.
+
+## 🔄 How It Works
+```
+DummyJSON API
+      ↓
+    useFetch
+      ↓
+  ProductList
+      ↓
+  Search Input
+      ↓
+    useForm
+      ↓
+ filteredProducts
+      ↓
+    Product
+      ↓
+   useToggle
+      ↓
+Show / Hide Description
+```
+📁 Project Structure
+```
+src/
+├── components/
+│   ├── Product.jsx
+│   └── ProductList.jsx
+│
+├── hooks/
+│   ├── useFetch.js
+│   ├── useForm.js
+│   └── useToggle.js
+│
+├── App.jsx
+└── main.jsx
+```
+## ⚙️ Installation
+
+Clone the repository:
+
+git clone YOUR_GITHUB_REPOSITORY_URL
+
+Navigate into the project:
+
+cd product-explorer-react
+
+Install dependencies:
+
+npm install
+
+Start the development server:
+
+npm run dev
+
+## 🎯 What I Practiced
+
+This project helped me practice:
+
+- Creating and using custom React Hooks
+- Managing form/input state
+- Fetching API data
+- Handling loading and error states
+- Filtering arrays with "filter()"
+- Rendering lists with "map()"
+- Component-level state
+- Passing data through props
+- Conditional rendering
+- Responsive UI with Tailwind CSS
+
+## 🔮 Future Improvements
+
+- Add product categories and category filtering
+- Add a product details page using React Router
+- Add sorting by price
+- Add pagination
+- Add a shopping cart
+- Improve accessibility
+- Add skeleton loading UI
+
+### 👩🏻‍💻 Author
+
+Alishba Shahid
+
+Frontend Web Developer | React.js | Tailwind CSS
+
+GitHub: https://github.com/alishbatech
